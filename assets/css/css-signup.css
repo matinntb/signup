@@ -1,0 +1,50 @@
+body{
+    background-image: url("../img/background.png");
+    /* background-repeat : no-repeat; */
+    background-size:cover;
+    /* position: relative;*/
+    background-position: center; 
+
+}
+
+.ui.two.column.centered.grid{
+    display: flex;
+    align-items: center;
+    height :100vh;
+    margin:0px;
+}
+
+.register-img{
+    width: 100%;
+    
+}
+
+.ui.form .field.error input[type=email],.ui.form .field.error input[type=password],.ui.form .field.error input[type=text]{
+    box-shadow:0.3em 0 0 0 #d95c5c inset;
+    box-sizing: border-box;
+    border-bottom-left-radius:0;
+    border-top-left-radius:0;
+}
+
+.input{
+    height: 30px;
+}
+
+#button{
+    height: 35px;
+    margin-top: 25px;
+    background-color: #a69ccb;
+    cursor: pointer;
+}
+
+.form{
+    padding:20px;
+} 
+
+.ui.center.aligned.header{
+    color: #243762;
+}
+
+li{
+    float: left;
+}
