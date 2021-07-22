@@ -17,11 +17,11 @@
 
     $valObj = new Control($name, $lastname, $email, $password, $confirmpassword);
     
-    $validate_data = $valObj->validation();
+    $validate_data = $valObj -> validation();
     
     if ($validate_data['success']){
 
-        $funObj->UserRegister($name, $lastname, $email, $password);
+        $funObj -> UserRegister($name, $lastname, $email, $password);
 
     }
 

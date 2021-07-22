@@ -48,3 +48,7 @@ body{
 li{
     float: left;
 }
+
+a{
+    text-decoration: underline;
+}
