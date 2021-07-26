@@ -163,17 +163,19 @@ $(document).ready(function () {
 
             if(dataResult.msg.length>1){
             
-              const list = document.createElement('ul');
-              
-              let listItem;
+              const list = $('<ul></ul>');
+
+              let li;
 
                 for (var i = 0 ; i < dataResult.msg.length ; i++) {
 
-                  listItem = document.createElement('li');
-                  
-                  listItem.innerHTML = dataResult.msg[i];
+                  list.append('<li>'+dataResult.msg[i]+'</li>')
 
-                  list.appendChild(listItem);
+                  // li=$('<li></li>')
+
+                  // li.html(dataResult.msg[i])
+
+                  // list.append(li)
                   
               }
                   
