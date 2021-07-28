@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="Content-Language" content="fa" />  
-        <title>Sign up</title>
+        <title>صفحه ثبت نام</title>
         <script src="assets/js/jquery.js"></script>
         <!--include sweet alert2 -->
         <script src="assets/sweetalert2/package/dist/sweetalert2.min.js"></script>
