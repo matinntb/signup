@@ -13,8 +13,6 @@ class Control{
 
     public $errorMSG = array();
 
-
-
     function __construct($name, $lastname, $email, $password, $confirmpassword)
     {
 
@@ -30,34 +28,35 @@ class Control{
 
     }
 
-    function validation()
+    public function validation()
+        //in this function use other functions to check validation
     {
         if(!$this -> validation_name_lastname($this -> name)){
             
-            array_push($this->errorMSG, "First name must be at least 2 characters");
+            array_push($this->errorMSG, "نام باید حداقل دو حرف باشد");
         }
         
         if(!$this -> validation_name_lastname($this -> lastname)){
 
-            array_push($this->errorMSG, "Lastname must be at least 2 characters");
+            array_push($this->errorMSG, "نام خانوادگی باید حداقل دو حرف باشد");
         }
 
         if(!$this -> validation_email($this -> email)){
 
-            array_push($this -> errorMSG, "Please Enter a valid email");
+            array_push($this -> errorMSG, "لطفا ایمیل معتبر وارد کنید");
         }
 
         if(!$this -> validation_password($this -> password)){
 
             if(strlen($this -> password) < 5){
 
-                array_push($this -> errorMSG,"Password must be at least 5 characters long");
+                array_push($this -> errorMSG,"رمز عبور باید حداقل 5 کاراکتر باشد");
 
             }
 
             else{            
 
-                array_push($this -> errorMSG, "Password must include [0-9][A-Za-z][@#$%]");
+                array_push($this -> errorMSG, " رمز عبور باید با حرف شروع شود سپس عدد سپس شامل حرف، عدد یا کاراکترهای خاص باشد ");
 
             }
 
@@ -65,7 +64,7 @@ class Control{
         
         if ($this -> password != $this -> confirmpassword){
 
-            array_push($this -> errorMSG,"Passwords do not match");
+            array_push($this -> errorMSG,"رمزها مطابقت ندارند");
 
         }
 
@@ -78,7 +77,7 @@ class Control{
 
      }
 
-    function validation_name_lastname($text){
+    private function validation_name_lastname($text){
 
         $newtext = trim($text);
 
@@ -95,7 +94,7 @@ class Control{
     
     }
 
-    function validation_email($email){
+    private function validation_email($email){
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
@@ -111,7 +110,7 @@ class Control{
 
     }
 
-    function validation_password($password){
+    private function validation_password($password){
 
         $pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{5,30}$/";
 

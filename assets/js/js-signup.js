@@ -1,7 +1,7 @@
 $(document).ready(function () {
-
+  // this function checks the inputs have error or not and also checks that they are empty or not
   function check_validate(){
-    if($("#firstname").parent().parent().hasClass("error") || $("#lastname").parent().parent().hasClass("error") || $("#email").parent().parent().hasClass("error") ||
+    if ($("#firstname").parent().parent().hasClass("error") || $("#lastname").parent().parent().hasClass("error") || $("#email").parent().parent().hasClass("error") ||
      $("#password").parent().parent().hasClass("error") || $("#confirmpassword").parent().parent().hasClass("error") || $('#checkbox').parent().parent().hasClass("error") ||
      !$('#firstname').val() || !$('#lastname').val() || !$('#email').val() || !$('#password').val() || !$('#confirmpassword').val() || $('#checkbox').is(':checked')==false){
      
@@ -14,9 +14,9 @@ $(document).ready(function () {
     }
 
   }
-  
-  $('.ui.form')
-  .form({
+
+  // front-end validation using semantic form-validation
+  $('.ui.form').form({
     on: 'blur',
     inline:true,
       fields: {
@@ -25,11 +25,11 @@ $(document).ready(function () {
         rules: [
           {
             type    : 'empty',
-            prompt  : 'Please Enter First name'
+            prompt  : 'لطفا نام را وارد کنید'
           },
           {
             type   : 'minLength[2]',
-            prompt : 'First name must be 2 characters'
+            prompt : 'نام باید حداقل دو حرف باشد'
           }
         ]
       },
@@ -38,11 +38,11 @@ $(document).ready(function () {
         rules: [
           {
             type    : 'empty',
-            prompt  : 'Please Enter Last name'
+            prompt  : 'لطفا نام خانوادگی را وارد کنید'
           },
           {
             type   : 'minLength[2]',
-            prompt : 'Last name must be 2 characters',
+            prompt : 'نام خانوادگی باید حداقل دو حرف باشد',
           }
         ]
       },
@@ -51,11 +51,11 @@ $(document).ready(function () {
         rules: [
           {
             type    : 'empty',
-            prompt  : 'Please Enter email'
+            prompt  : 'لطفا ایمیل را وارد کنید'
           },
           {
             type   : 'email',
-            prompt : 'Please Enter a valid email'
+            prompt : 'لطفا ایمیل معتبر وارد کنید'
           }
         ]
       },
@@ -64,19 +64,19 @@ $(document).ready(function () {
         rules: [
           {
             type    : 'empty',
-            prompt  : 'Please Enter password'
+            prompt  : 'لطفا رمز عبور را وارد کنید'
           },
           {
             type    : 'minLength[5]',
-            prompt  : 'Please must be at least 5 characters long'
+            prompt  : 'رمز عبور حداقل شامل 5 کاراکتر است'
           },
           {
             type    : 'maxLength[30]',
-            prompt  : 'Please must be at most 30 characters long'
+            prompt  : 'رمز عبور حداکثر شامل 30 کاراکتر است'
           },
           {
-            type   : 'regExp[/^([A-Za-z]+)([0-9]+)(([A-Za-z0-9!@#$%&*?])*){5,30}$/]',//regExp[/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{5,30}$/]
-            prompt : 'password must include [A-Za-z][0-9][@$!%*#?&]'
+            type   : 'regExp[/^([A-Za-z]+)([0-9]+)(([A-Za-z0-9!@#$%&*?])*){5,30}$/]',
+            prompt : ' رمز عبور باید با حرف شروع شود سپس عدد سپس شامل حرف، عدد یا کاراکترهای خاص باشد '
           }
         ]
       },
@@ -85,7 +85,7 @@ $(document).ready(function () {
         rules: [
           {
             type   : 'match[password]',
-            prompt : 'Passwords do not match'
+            prompt : 'رمزها مطابقت ندارند'
           }
         ]
       },
@@ -94,18 +94,19 @@ $(document).ready(function () {
         rules:[
           {
             type: 'checked',
-            prompt:'You must agree to the terms'
+            prompt:'باید شرایط و قوانین را قبول کنید'
           }
         ]
       }
   }
 
   });
-  $('#button').click( function() { 
-    
+
+  $('#button').click( function() {
+
     $(this).transition('pulse');
 
-    if(check_validate()){ 
+    if(check_validate()){
 
     var firstname = $('#firstname').val();
 
@@ -116,8 +117,6 @@ $(document).ready(function () {
     var password = $('#password').val();
 
     var confirmpassword = $('#confirmpassword').val();
-
-    // if(firstname!="" && lastname!="" && email!="" && password!="" && confirmpassword!="" && checkbox ){
 
       $.ajax({
 
@@ -145,18 +144,21 @@ $(document).ready(function () {
 
           if(dataResult.statusCode==200){
 
-            $('#signup-form').find('input').val('');
+            $('input').val('');
 
             $('#checkbox').prop('checked',false);
-            
+
+            // use sweet alert2 to show message
             Swal.fire({
 
               icon: 'success',
 
-              title: 'Registration successful !'
+              title: 'ثبت نام با موفقیت انجام شد',
+
+              confirmButtonText: "باشه"
 
             })
-        
+
           }
 
           else if(dataResult.statusCode==400){
@@ -164,8 +166,6 @@ $(document).ready(function () {
             if(dataResult.msg.length>1){
             
               const list = $('<ul></ul>');
-
-              let li;
 
                 for (var i = 0 ; i < dataResult.msg.length ; i++) {
 
@@ -177,27 +177,32 @@ $(document).ready(function () {
 
                   // list.append(li)
                   
-              }
+                }
                   
                 Swal.fire({
 
                   icon: 'error',
 
-                  title: "Error entering information",
+                  title: "خطا در وارد کردن اطلاعات",
 
-                  html: list
+                  html: list,
+
+                  confirmButtonText: "باشه"
 
                 })
 
             }
+
             else{
               Swal.fire({
 
                 icon: 'error',
 
-                title: "Error entering information",
+                title: "خطا در وارد کردن اطلاعات",
 
-                html: dataResult.msg
+                html: dataResult.msg,
+
+                confirmButtonText: "باشه"
 
               })
             }
@@ -210,7 +215,9 @@ $(document).ready(function () {
 
             icon: 'error',
 
-            title: 'An error occurred at the server !'
+            title: 'خطایی در سمت سرور رخ داد!',
+
+            confirmButtonText: "باشه"
 
           })
 
@@ -221,7 +228,5 @@ $(document).ready(function () {
       });
 
     }
-    // }
-
   });  
 });

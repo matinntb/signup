@@ -22,7 +22,7 @@ class DbFunction {
 
         if (mysqli_num_rows($duplicate) > 0){
 
-            echo json_encode(array("success" => false, "statusCode" => 400, "msg" => ["Email is already exist !"]));
+            echo json_encode(array("success" => false, "statusCode" => 400, "msg" => ["این ایمیل وجود دارد!"]));
         }
 
         else{

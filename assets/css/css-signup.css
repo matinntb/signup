@@ -1,10 +1,13 @@
-body{
-    background-image: url("../img/background.png");
-    /* background-repeat : no-repeat; */
-    background-size:cover;
-    /* position: relative;*/
-    background-position: center; 
+@font-face {
+    font-family: vazir-Thin;
+    src: url(../font/vazir/vazir-Thin.woff);
+}
 
+body{
+    background-image : url("../img/background.png");
+    background-size : cover;
+    background-position : center;
+    font-family : vazir-Thin;
 }
 
 .ui.two.column.centered.grid{
@@ -16,18 +19,22 @@ body{
 
 .register-img{
     width: 100%;
-    
 }
 
-.ui.form .field.error input[type=email],.ui.form .field.error input[type=password],.ui.form .field.error input[type=text]{
-    box-shadow:0.3em 0 0 0 #d95c5c inset;
+.ui.form .field.error input[type=email], .ui.form .field.error input[type=password], .ui.form .field.error input[type=text]{
+    box-shadow:-35px 0px 0px -30px #d95c5c inset;
     box-sizing: border-box;
-    border-bottom-left-radius:0;
-    border-top-left-radius:0;
+    border-bottom-right-radius:0;
+    border-top-right-radius:0;
 }
 
 .input{
     height: 30px;
+}
+
+.input::placeholder{
+    font-family: vazir-Thin;
+
 }
 
 #button{
@@ -35,20 +42,37 @@ body{
     margin-top: 25px;
     background-color: #a69ccb;
     cursor: pointer;
+    font-family: vazir-Thin;
 }
 
 .form{
     padding:20px;
+
 } 
 
 .ui.center.aligned.header{
     color: #243762;
+    font-family: vazir;
 }
 
 li{
-    float: left;
+    float: right;
 }
 
 a{
     text-decoration: underline;
+}
+
+.swal2-title, .swal2-styled.swal2-confirm{
+    font-family: vazir-Thin;
+}
+
+@media only screen and (max-width: 990px) {
+    #form-image-div{
+        margin:5%;
+    }
+    .input, #button{
+        margin: 30px 0;
+        height: 60px;
+    }
 }
