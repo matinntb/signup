@@ -1,6 +1,4 @@
 # signup
-𝑴𝒂𝒕𝒊𝒏, [29.07.21 17:23]
-# signup
 <!-- PROJECT VIEW -->
 <br />
 <p align="center">
